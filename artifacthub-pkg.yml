@@ -5,24 +5,24 @@
 # This config can be saved to its default location with:
 #   kwctl scaffold artifacthub > artifacthub-pkg.yml 
 version: 0.0.1-unreleased
-name: policy-name
-displayName: Policy Name
-createdAt: 2023-10-16T08:39:33.352432617Z
-description: Short description
+name: policy-tenant-label
+displayName: Policy Tenant Label
+createdAt: 2024-07-18T14:20:16.508632268Z
+description: Policy that adds tenant label to all resources
 license: Apache-2.0
-homeURL: https://github.com/yourorg/policy-name
+homeURL: https://github.com/coreeng/policy-tenant-label
 containersImages:
 - name: policy
-  image: ghcr.io/yourorg/policies/policy-name:v0.0.1-unreleased
+  image: ghcr.io/coreeng/policies/policy-tenant-label:v0.0.1-unreleased
 keywords:
 - pod
 - cool policy
 - kubewarden
 links:
 - name: policy
-  url: https://github.com/yourorg/policy-name/releases/download/v0.0.1-unreleased/policy.wasm
+  url: https://github.com/coreeng/policy-tenant-label/releases/download/v0.0.1-unreleased/policy.wasm
 - name: source
-  url: https://github.com/yourorg/policy-name
+  url: https://github.com/coreeng/policy-tenant-label
 install: |
   The policy can be obtained using [`kwctl`](https://github.com/kubewarden/kwctl):
   ```console
@@ -40,7 +40,7 @@ provider:
 recommendations:
 - url: https://artifacthub.io/packages/helm/kubewarden/kubewarden-controller
 annotations:
-  kubewarden/mutation: 'false'
+  kubewarden/mutation: 'true'
   kubewarden/resources: Pod
   kubewarden/rules: |
     - apiGroups:
@@ -51,3 +51,4 @@ annotations:
       - pods
       operations:
       - CREATE
+      - UPDATE
